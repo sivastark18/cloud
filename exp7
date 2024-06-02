@@ -1,0 +1,60 @@
+-->sudo su
+-->yum install docker
+-->systemctl start docker
+sudo curl -L "https://github.com/docker/compose/releases/download/v2.24.7/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+
+sudo chmod +x /usr/local/bin/docker-compose
+
+docker-compose –version
+
+nano docker-compose.yml
+
+version: '3.8' 
+
+services: 
+web: 
+image: nginx:latest 
+ports: - "80:80" 
+networks: - frontend 
+
+database: 
+image: mysql:latest 
+environment:
+ MYSQL_DATABASE: exampledb 
+MYSQL_USER: user 
+MYSQL_PASSWORD: password 
+MYSQL_ROOT_PASSWORD: password 
+volumes: - db-data:/var/lib/mysql 
+networks: - backend 
+
+cache:
+image: redis:latest 
+networks: - backend 
+
+networks: 
+frontend:
+backend: 
+
+volumes: 
+db-data:
+
+
+docker-compose up -d
+
+docker ps
+
+docker-compose up -d –scale cache=3
+
+-->docker-compose up -d
+-->docker ps
+-->docker-compose up -d --scale cache=3
+--> docker pull ubuntu
+--> docker run -dit --name host1 --network host ubuntu
+--> docker run -dit --name host2 --network host ubuntu
+--> docker ps
+--> docker exec host1 apt-get update
+--> docker  exec host1 apt-get install iputils-ping
+--> docker exec host2 apt-get update
+--> docker  exec host2 apt-get install iputils-ping
+--> docker exec host1 hostname -i
+--> docker exec host2 ping -c 4 <previously generated IP>
