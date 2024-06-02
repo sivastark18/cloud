@@ -1,0 +1,54 @@
+import java.util.*;
+import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+
+public class BankingTest
+{
+    @Test
+    public void DepositTest()
+    {
+        banking b = new banking();
+        assertEquals(true,b.Deposit(100));
+    }
+    @Test
+    public void WithdrawTest()
+    {
+        banking b = new banking();
+        assertEquals(true,b.Withdraw(50));
+    }
+    @Test 
+    public void Balance()
+    {
+        banking b = new banking();
+        int bal = b.Balance();
+        System.out.print(bal);
+    }
+}
+public class banking
+{
+    int amt =100;
+    public boolean Deposit(int a)
+    {
+        amt = amt+a;
+        return true;
+    }
+    public boolean Withdraw(int w)
+    {
+        amt=amt-w;
+        if(amt<0)
+        {
+           return false;
+        }
+            return true;
+    }
+    public int Balance()
+    {
+        return amt;
+    }
+    
+}
+javac -cp .:junit-4.13.2.jar:hamcrest-core-1.3.jar src/banking.java test/BankingTest.java
+java -cp .:src:test:junit-4.13.2.jar:hamcrest-core-1.3.jar org.junit.runner.JUnitCore BankingTest
+
+wget https://repo1.maven.org/maven2/junit/junit/4.13.2/junit-4.13.2.jar
+ wget https://repo1.maven.org/maven2/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar
