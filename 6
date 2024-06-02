@@ -1,0 +1,14 @@
+
+EXP 6:   DOCKER CONTAINERIZATION AND DOCKER VOLUMES
+-->create a instance
+-->click connect
+-->select the ec2 instance connect
+-->connect
+-->sudo su
+-->yum install docker
+-->systemctl start docker
+-->docker pull nginx
+-->docker volume create my_volume
+-->docker run -d --name my_nginx -v my_volume:/usr/share/nginx/html -p 80:80 
+nginx
+-->for checking docker inspect my_nginx(container name)
