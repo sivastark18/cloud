@@ -1,0 +1,20 @@
+..Go to the ECS dashboard, create a new cluster with a unique name, and choose AWS 
+Fargate(serverless) as the infrastructure. 
+
+.. Then, create a task definition that includes nginx image.
+
+..
+ Next, create a service and specify the task family name. 
+
+..
+After that, configure the network settings.
+
+..
+ Specify the load balancer type, assign it a name, and then click 'create'. 
+
+..
+After creating the service, go the EC2 dashboard and look for load balancers option. 
+Select the load balancer you’ve given for the service and copy the DNS name. 
+
+..
+Open a new window , paste the copied name and you will see the Nginx image 
